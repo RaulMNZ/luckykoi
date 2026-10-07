@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+  <link rel="icon" type="image/png" href="assets/icone.png">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Lucky Koi — jogo demonstrativo</title>
@@ -1090,7 +1091,7 @@ body::before{background:repeating-radial-gradient(circle at 20% 20%,transparent 
 #sound[aria-pressed="false"] .sound-off-line{stroke:#A83DFF!important}
 details{border-color:rgba(0,223,255,.34);background:linear-gradient(145deg,rgba(1,30,116,.78),rgba(6,26,69,.92));color:#E8F8FF}
 summary{color:#42F5E2}
-.app > details{width:92%;margin:14px auto 0;box-sizing:border-box}
+.app > details{width:92%;margin:28px auto 0;box-sizing:border-box;border:0!important;background:transparent!important;box-shadow:none!important}
 table td,table th{border-bottom-color:rgba(232,248,255,.10)}
 .reset{border-color:rgba(0,223,255,.55);background:rgba(1,30,116,.28);color:#E8F8FF}
 .foot{color:#C9E8F8}
@@ -1142,6 +1143,94 @@ table td,table th{border-bottom-color:rgba(232,248,255,.10)}
 .spin:disabled {
   opacity: .5 !important;
 }
+
+/* Caixa dos controles — estilo Lucky Koi */
+.controls{
+  position:relative;
+  isolation:isolate;
+  border:1px solid rgba(0,223,255,.46)!important;
+  border-top:1px solid rgba(0,223,255,.46)!important;
+  background:
+    radial-gradient(ellipse at 50% 0%,rgba(0,223,255,.16),transparent 48%),
+    linear-gradient(180deg,rgba(5,35,84,.96),rgba(2,17,48,.98))!important;
+  border-radius:16px;
+  margin:5px 0 0;
+  padding:12px 18px 10px;
+  overflow:visible;
+  box-shadow:
+    0 8px 18px rgba(0,0,0,.30),
+    0 0 0 1px rgba(113,55,255,.20),
+    0 0 22px rgba(0,107,255,.16),
+    inset 0 1px 0 rgba(232,248,255,.12),
+    inset 0 -10px 24px rgba(1,30,116,.18);
+}
+.controls::before{
+  content:"";
+  position:absolute;
+  inset:4px;
+  z-index:-1;
+  border:1px solid rgba(32,224,197,.16);
+  border-radius:12px;
+  background:
+    linear-gradient(90deg,transparent 0%,rgba(0,223,255,.05) 50%,transparent 100%);
+  box-shadow:inset 0 0 14px rgba(0,107,255,.10);
+  pointer-events:none;
+}
+.controls::after{
+  content:"";
+  position:absolute;
+  left:10%;
+  right:10%;
+  top:0;
+  height:2px;
+  border-radius:99px;
+  background:linear-gradient(90deg,transparent,#00DFFF 22%,#F6C64E 50%,#00DFFF 78%,transparent);
+  box-shadow:0 0 10px rgba(0,223,255,.42);
+  pointer-events:none;
+}
+.controls > *{position:relative;z-index:1}
+
+@media(max-width:380px){
+  .controls{padding:11px 12px 9px;border-radius:14px}
+  .controls::before{inset:3px;border-radius:10px}
+}
+
+@media(max-height:520px) and (orientation:landscape){
+  .controls{padding:8px 14px max(8px,env(safe-area-inset-bottom,0px));border-radius:14px}
+}
+/* Moldura dos controles — arte fornecida em assets/moldura2.png */
+.controls{
+  position:relative;
+  /* tamanho/posição dos BOTÕES */
+}
+
+.controls::before{
+  /* tamanho/posição SOMENTE DA MOLDURA */
+  position:absolute;
+  width:420px;
+  height:240px;
+  left:50%;
+  top:55%;
+  transform:translate(-50%,-50%);
+  background:url("assets/moldura2.png") center/100% 100% no-repeat;
+}
+.controls::after{display:none!important;content:none!important}
+.controls > *{position:relative!important;z-index:1!important}
+/* AJUSTE MANUAL DO BOTÃO GIRAR */
+.spin{
+  width:90px!important;
+  height:90px!important;
+  position:relative!important;
+  left:0px!important;
+  top:0px!important;
+}
+/* Remove a caixa antiga atrás da moldura */
+.controls{
+  border:0!important;
+  background:none!important;
+  box-shadow:none!important;
+}
+
 </style>
 
 </head>
